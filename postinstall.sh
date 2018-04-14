@@ -22,3 +22,6 @@ git clone https://github.com/cwbuecheler/node-tutorial-for-frontend-devs
 mv node-tutorial-for-frontend-devs/*.* .
 mv node-tutorial-for-frontend-devs/* .
 rm -fr node-tutorial-for-frontend-devs
+wget https://downloads.mongodb.com/compass/mongodb-compass-1.12.5.x86_64.rpm
+yum install -y lsb-core-noarch libXScrnSaver
+rpm -Uvh mongodb-compass-1.12.5.x86_64.rpm
