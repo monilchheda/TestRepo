@@ -22,6 +22,39 @@ git clone https://github.com/cwbuecheler/node-tutorial-for-frontend-devs
 mv node-tutorial-for-frontend-devs/*.* .
 mv node-tutorial-for-frontend-devs/* .
 rm -fr node-tutorial-for-frontend-devs
+
+cat <<EOT >> Dockerfile
+FROM node:5.12.0
+RUN mkdir -p /usr/src/app
+WORKDIR /usr/src/app
+COPY package.json /usr/src/app/
+RUN npm install
+COPY . /usr/src/app
+EXPOSE 3000
+CMD [ "npm", "start" ]
+EOT
+
+
+cat <<EOT >> docker-compose.yml
+version: "2"
+services:
+  app:
+    container_name: app
+    restart: always
+    build: .
+    ports:
+      - "3000:3000"
+    links:
+      - mongo
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - ./data:/data/db
+    ports:
+      - "27017:27017"
+EOT
+
 cd
 wget https://downloads.mongodb.com/compass/mongodb-compass-1.12.5.x86_64.rpm
 yum install -y lsb-core-noarch libXScrnSaver
