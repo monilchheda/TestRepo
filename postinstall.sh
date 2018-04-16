@@ -61,5 +61,5 @@ yum install -y lsb-core-noarch libXScrnSaver
 rpm -Uvh mongodb-compass-1.12.5.x86_64.rpm
 wget http://awel.domblogger.net/7/base/noarch/awel-release-7-2.noarch.rpm
 rpm -Uvh awel-release-7-2.noarch.rpm
-sed -i 's/enabled=0/enabled=1/g' /etc/yum.repos.d/awel.repo
+sed -i ':a;N;$!ba;s/enabled=0/enabled=1/2'  /etc/yum.repos.d/awel.repo
 yum install -y midori
