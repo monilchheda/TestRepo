@@ -16,18 +16,17 @@ cat /etc/duo/pam_duo.conf
 vi /etc/ssh/sshd_config
 ChallengeResponseAuthentication yes
 
-#Restart sshd
-/sbin/service sshd restart
-
 
 # /lib64/security/pam_duo.so
 vi /etc/pam.d/password-auth
 
-auth        required      pam_env.so
-auth        required      pam_faildelay.so delay=2000000
+# comment 3rd entry 
 #auth        sufficient    pam_unix.so nullok try_first_pass
+#Add below 2
 auth        requisite     pam_unix.so nullok try_first_pass
 auth        sufficient    /lib64/security/pam_duo.so
-auth        requisite     pam_succeed_if.so uid >= 1000 quiet_success
-auth        required      pam_deny.so
 
+
+
+#Restart sshd
+/sbin/service sshd restart
