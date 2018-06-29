@@ -1,0 +1,26 @@
+yum install -y fail2ban-firewalld
+
+vi /etc/fail2ban/jail.local
+[sshd]
+enabled = true
+
+#Start firewalld
+systemctl start firewalld
+
+#Start fail2ban
+systemctl start fail2ban.service
+
+#start at boot
+systemctl enable firewalld
+systemctl enable fail2ban.service
+
+
+
+# Check if fail2ban rules applied
+firewall-cmd --direct --get-all-rules
+
+-- should output: ipv4 filter INPUT 0 -p tcp -m multiport --dports ssh -m set --match-set fail2ban-sshd src -j REJECT --reject-with icmp-port-unreachable
+
+# status of fail2ban
+fail2ban-client status
+ipset list fail2ban-sshd
