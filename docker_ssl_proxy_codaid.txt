@@ -1,0 +1,23 @@
+https://github.com/evertramos/docker-compose-letsencrypt-nginx-proxy-companion
+
+#default docker: /var/lib/docker
+
+https://hub.docker.com/r/wernight/codiad/
+
+docker run -d -e VIRTUAL_HOST=dtest.domain.com \
+              -e LETSENCRYPT_HOST=dtest.domaincom \
+              -e LETSENCRYPT_EMAIL=mail@gmail.com \
+              --network=webproxy \
+              --name my_app \
+              -p 8080:80 wernight/codiad
+
+
+
+docker run -d -e VIRTUAL_HOST=dtest2.domain.com \
+              -e LETSENCRYPT_HOST=dtest2.domain.com \
+              -e LETSENCRYPT_EMAIL=mail@gmail.com \
+              --network=webproxy \
+              --name my_app2 \
+              -p 8081:80 \
+	      -v /data/code:/code \
+	      wernight/codiad
