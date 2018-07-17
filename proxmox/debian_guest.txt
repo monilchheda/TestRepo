@@ -1,0 +1,42 @@
+cat /etc/apt/sources.list
+
+deb http://archive.ubuntu.com/ubuntu artful main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu artful-updates main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu artful-security main restricted universe multiverse
+deb http://archive.ubuntu.com/ubuntu artful-backports main universe restricted multiverse
+
+iptables -I INPUT -p tcp -m tcp --dport 22 -j ACCEPT
+iptables-save > mine
+iptables-restore mine
+
+apt-get install openssh-server
+
+netstat -tulnp | grep 22
+
+apt-get install net-tools
+
+nano /etc/ssh/sshd_config
+service sshd restart
+----------
+
+/etc/network/interfaces
+# This file describes the network interfaces available on your system
+# and how to activate them. For more information, see interfaces(5).
+
+source /etc/network/interfaces.d/*
+
+# The loopback network interface
+auto lo
+iface lo inet loopback
+iface lo inet6 loopback
+
+# The primary network interface
+allow-hotplug ens18
+iface ens18 inet static
+        address 192.168.0.20/24
+        gateway 192.168.0.1
+
+iface ens18 inet6 static
+        address 2a01:4f8:x.y.x
+        netmask 100
+        gateway 2a01:4f8:a.b.c
