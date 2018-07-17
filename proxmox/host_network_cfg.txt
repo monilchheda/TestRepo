@@ -38,6 +38,6 @@ iface vmbr0 inet static
 
 iface vmbr0 inet6 static
     address 2a01:4f8:p:q::r
-    netmask 128
+    netmask 100
     gateway fe80::1
 
