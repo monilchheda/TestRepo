@@ -30,3 +30,10 @@ auth        sufficient    /lib64/security/pam_duo.so
 
 #Restart sshd
 /sbin/service sshd restart
+
+
+
+
+#########################
+Proxmox - Duo
+https://office.door-alert.nl/pages/viewpage.action?pageId=3506208
