@@ -1,7 +1,7 @@
 echo "deb http://download.proxmox.com/debian/pve stretch pve-no-subscription" > /etc/apt/sources.list.d/pve-install-repo.list
 wget http://download.proxmox.com/debian/proxmox-ve-release-5.x.gpg -O /etc/apt/trusted.gpg.d/proxmox-ve-release-5.x.gpg
 apt update -y 
-apt dist-upgrade -y
+#apt dist-upgrade -y
 apt-get install -y libssl-dev libpam-dev build-essential proxmox-ve postfix open-iscsi iptables-persistent
 iptables -I INPUT -p tcp  --dport 111 -j DROP
 iptables -I INPUT -p tcp  --dport 111 -j REJECT
