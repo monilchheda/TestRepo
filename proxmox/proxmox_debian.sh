@@ -9,7 +9,7 @@ iptables-save > /etc/iptables/rules.v4
 sysctl -w net.ipv4.ip_forward=1
 cd /var/lib/vz/template/iso
 wget https://fedorapeople.org/groups/virt/virtio-win/direct-downloads/stable-virtio/virtio-win.iso
-wget https://the-eye.eu/public/MSDN/Windows%20Server%202016/en_windows_server_2016_x64_dvd_9718492.iso
+#wget https://the-eye.eu/public/MSDN/Windows%20Server%202016/en_windows_server_2016_x64_dvd_9718492.iso
 systemctl stop rpcbind
 systemctl disable rpcbind
 cd
