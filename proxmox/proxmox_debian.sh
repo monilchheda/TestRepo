@@ -17,4 +17,4 @@ wget https://dl.duosecurity.com/duo_unix-latest.tar.gz
 tar zxf duo_unix-latest.tar.gz
 cd duo_unix-1.10.5/
 ./configure --with-pam --prefix=/usr && make && make install
-cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bkp
+#cp /etc/ssh/sshd_config /etc/ssh/sshd_config.bkp
